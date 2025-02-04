@@ -1,0 +1,42 @@
+
+.home-container {
+    width: 100%;
+    margin-top: 64px;
+    display: flex;
+}
+
+.home-background {
+    width: 100%;
+    height: auto;
+    opacity: 0.6;
+    bottom: -24px;
+}
+
+.home-title-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 128px;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+    z-index: 2;
+    opacity: 0.75;
+}
+
+.home-title {
+    width: 200px;
+    height: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 3;
+    opacity: 1 !important;
+}
+
+.home-subtitle {
+    color: white;
+    font-size: 24px;
+    z-index: 2;
+}
