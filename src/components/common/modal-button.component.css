@@ -1,0 +1,25 @@
+
+.modal-button-container {
+    display: flex;
+    width: 100%;
+}
+
+.modal-button {
+    font-size: calc(1vmax + 8px) !important;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 1vmin !important;
+    color: #0C4739 !important;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-button {
+        font-size: 4vmin !important;
+    }
+}
+
+.button-icon {
+    padding-left: 2vmin;
+}

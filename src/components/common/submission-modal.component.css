@@ -1,0 +1,117 @@
+
+.close-button-container {
+    width: 100%;
+    display: flex;
+}
+
+.close-button {
+    margin-left: auto;
+}
+
+.modal-title-container {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: calc(1.5vmax + 10px);
+    padding-bottom: 12px;
+}
+
+.modal-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 12px;
+}
+
+.modal-field-full {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 12px;
+}
+
+@media screen and (min-width: 768px) {
+    .modal-field {
+        max-width: calc(50% - 24px);
+    }
+}
+
+.modal-required {
+    padding-left: 6px;
+    font-size: small;
+    color: #cc0000
+}
+
+.modal-label {
+    display: flex;
+    width: 100% !important;
+    margin: 0 auto 0 0;
+    justify-content: flex-start;
+}
+
+.modal-description-container {
+    display: flex;
+    flex-direction: column;
+    margin: 12px;
+}
+
+textarea {
+    height: 360px;
+    resize: none !important;
+}
+
+.action-button-container {
+    display: flex;
+    margin: 24px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-button {
+    min-width: 200px;
+    margin: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .action-button {
+        min-width: 50%;
+    }
+}
+
+.success-container {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-content {
+    padding: 18px;
+    font-size: 32px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-button {
+    width: 150px;
+}
+
+.error-content {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #bb0000;
+}

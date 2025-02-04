@@ -1,0 +1,58 @@
+
+.contact-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background-color: #85754E;
+}
+
+@media screen and (min-width: 800px) {
+    .contact-icon {
+        padding-right: 32px;
+    }
+}
+
+.contact-title-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 64px;
+}
+
+.contact-title {
+    color: white;
+    font-size: 32px;
+}
+
+.contact-content {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-subtitle {
+    margin-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.contact-method {
+    color: #61dafb !important;
+}
+
+.contact-method:hover {
+    text-decoration-line: underline;
+}
+
+.method-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.fa-phone, .fa-envelope {
+    padding-right: 6px;
+}

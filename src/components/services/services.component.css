@@ -1,0 +1,111 @@
+
+.services-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+@media screen and (min-width: 768px) {
+    .services-icon {
+        padding-right: 32px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .agrandissement {
+        margin-bottom: 0 !important;
+    }
+
+    .revetement {
+        margin-bottom: 0 !important;
+    }
+}
+
+.services-title-container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 32px;
+}
+
+.services-title {
+    color: white;
+    font-size: 32px;
+}
+
+.services-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.level {
+    margin-bottom: 0 !important;
+}
+
+/* @font-face {
+    font-family: CustomServiceFont;
+    src: url("../../assets/Nunito/Nunito-VariableFont_wght.ttf");
+} */
+
+.service {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 24px;
+    width: 240px;
+    height: 240px;
+    border-radius: 6px;
+    background-color: #0C4739;
+    transition: all .3s ease-in-out;
+}
+
+.service:hover {
+    transform: scale(1.05);
+}
+
+.service-name {
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+    margin: 6px;
+}
+
+.agrandissement {
+    background-image: url("../../assets/agrandissement.png");
+}
+
+.ajout-etage {
+    background-image: url("../../assets/ajout-detage.png");
+}
+
+.coffrage {
+    background-image: url("../../assets/coffrage.png");
+}
+
+.escaliers {
+    background-image: url("../../assets/escaliers.png");
+}
+
+.finition-interieure {
+    background-image: url("../../assets/finition-interieure.png");
+}
+
+.maison-neuve {
+    background-image: url("../../assets/maison-neuve.png");
+}
+
+.pose-plancher {
+    background-image: url("../../assets/pose-plancher.png");
+}
+
+.revetement {
+    background-image: url("../../assets/revetement.png");
+}
+
+.toiture {
+    background-image: url("../../assets/toiture.png");
+}

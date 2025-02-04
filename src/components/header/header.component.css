@@ -1,0 +1,36 @@
+
+.navbar {
+    min-height: 64px;
+}
+
+.navbar-menu {
+    transition: visibility 0.5s;
+}
+
+.navbar-start {
+    /*margin-left: auto;*/
+}
+
+.navbar-item {
+    padding-right: 32px !important;
+    padding-left: 32px !important;
+}
+
+.navbar-burger {
+    height: auto !important;
+    min-width: 64px;
+}
+
+.logo {
+    min-height: 64px;
+}
+
+.logo-container {
+    margin-left: 16px;
+    margin-right: 32px;
+    padding: 0 !important;
+}
+
+.header-link {
+    font-size: 18px;
+}
