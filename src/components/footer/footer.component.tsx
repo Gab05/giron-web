@@ -18,7 +18,7 @@ export default class Footer extends Component<FooterProps, FooterState> {
           Giron
         </p>
         <p className="footer-text">
-          © 2025 Tous droits réservés.
+          © {new Date().getFullYear()} Tous droits réservés.
         </p>
       </div>
     )
