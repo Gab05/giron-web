@@ -21,7 +21,6 @@ root.render(
 );
 
 triggerVisitMetaEvent(MetaEventName.websiteAccess)
-  .then((response) => console.log("Successfully posted meta event", response))
   .catch((error) => console.warn("Error submitting meta event: ", error));
 
 // If you want to start measuring performance in your app, pass a function

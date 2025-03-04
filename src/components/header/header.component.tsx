@@ -20,12 +20,12 @@ export default class Header extends Component<HeaderProps, HeaderState> {
             <img className="logo" alt="giron-logo" src={gironLogo} />
           </a>
 
-          <a id="navbar-menu-toggle" role="button" className="navbar-burger" aria-label="menu" aria-expanded="false"
+          <button id="navbar-menu-toggle" className="navbar-burger" aria-label="menu" aria-expanded="false"
              data-target="navbar-menu" onClick={this.handleNavbarMenuClick}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-          </a>
+          </button>
         </div>
 
         <div id="navbar-menu" className="navbar-menu">
@@ -67,6 +67,19 @@ export default class Header extends Component<HeaderProps, HeaderState> {
               onClick={this.handleNavbarMenuClick}
             >
               Services
+            </Link>
+
+            <Link
+              className="navbar-item is-link header-link"
+              activeClass="active"
+              to="realisations"
+              spy={true}
+              smooth={true}
+              offset={-64}
+              duration={100}
+              onClick={this.handleNavbarMenuClick}
+            >
+              Réalisations
             </Link>
 
             <Link

@@ -11,6 +11,7 @@ import PromoBanner from "./components/home/promo-banner.component.tsx";
 
 import "./App.css";
 import PromoModal from "./components/home/promo-modal.component.tsx";
+import Realisations from "./components/realisations/realisations.component.tsx";
 
 function App() {
   const [submissionModalOpen, setSubmissionModalOpen] = useState(false);
@@ -32,6 +33,7 @@ function App() {
         <Home />
         <Enterprise openSubmissionModal={openSubmissionModal} />
         <Services />
+        <Realisations />
         <Contact openSubmissionModal={openSubmissionModal} />
         <Footer openPromoModal={openPromoModal} />
       </div>
