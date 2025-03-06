@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 
 import ImageSlideshow from '../common/image-slideshow.component.tsx';
-/* import * as imageSources from '../../assets/slideshow_images/'; */
 
 import './realisations.component.css';
-
-function importAll(r: any) {
-  return r.keys().map(r);
-}
-// @ts-ignore
-const images = importAll(require.context('../../assets/slideshow_images', false, /^\.\/.*$/));
 
 interface RealisationsProps {
 
@@ -27,7 +20,7 @@ export default class Realisations extends Component<RealisationsProps, Realisati
           <i className="fa-solid fa-photo fa-lg enterprise-icon level-item"></i>
           <div className='realisations-title level-item'>RÉALISATIONS</div>
         </div>
-        <ImageSlideshow images={images} />
+        <ImageSlideshow images={[]} />
       </div>
     )
   }

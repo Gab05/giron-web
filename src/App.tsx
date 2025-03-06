@@ -8,10 +8,12 @@ import Contact from './components/contact/contact.component.tsx'
 import Footer from './components/footer/footer.component.tsx'
 import SubmissionModal from "./components/common/submission-modal.component.tsx";
 import PromoBanner from "./components/home/promo-banner.component.tsx";
-
-import "./App.css";
 import PromoModal from "./components/home/promo-modal.component.tsx";
 import Realisations from "./components/realisations/realisations.component.tsx";
+import { firebaseStorage } from "./firebase-config.js";
+
+import "./App.css";
+
 
 function App() {
   const [submissionModalOpen, setSubmissionModalOpen] = useState(false);
@@ -30,10 +32,10 @@ function App() {
       <div className="App-container">
         <Header />
         <PromoBanner openPromoModal={openPromoModal} />
-        <Home />
+        <Home storage={firebaseStorage} />
         <Enterprise openSubmissionModal={openSubmissionModal} />
         <Services />
-        <Realisations />
+        <Realisations storage={firebaseStorage} />
         <Contact openSubmissionModal={openSubmissionModal} />
         <Footer openPromoModal={openPromoModal} />
       </div>

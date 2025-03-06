@@ -23,10 +23,20 @@ Your app is ready to be deployed!
 
 ## Firebase Deploy
 
-Steps to deploy to firebase:L
+Steps to deploy to firebase:
 
-- Make sure you are login using `firebase login`
+- Make sure you are logged in using `firebase login`
 - Run `npm run build`
 - Deploy using `firebase deploy`
 - To deploy web app only, add param `firebase deploy --only hosting`
 - To deploy functions only, add param `firebase deploy --only functions`
+
+## Firebase configs and secrets
+
+This project expects the `src/firebase-config.js` file which has been voluntarily excluded from version control.
+
+The project expects the file to export the following firebase objects:
+```javascript
+export { firebaseApp, firebaseConfig, firebaseStorage };
+```
+Which should be defined and initialized in this file. These are initialized through the `firebase` and `@firebase/storage` libraries and require the firebase project configuration object available in the Project console, settings page.

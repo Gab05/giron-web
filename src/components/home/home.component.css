@@ -1,29 +1,73 @@
 
 .home-container {
     width: 100%;
-    margin-top: 0;
-    display: flex;
-}
-
-.home-background {
-    width: 100%;
-    height: auto;
-    opacity: 0.6;
-    bottom: -24px;
+    height: 100%;
 }
 
 .home-title-container {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 156px;
+    margin: auto 0;
+    top: 152px;
     left: 0;
     right: 0;
     justify-content: center;
+    max-height: 20vmax;
     width: 100%;
     background-color: white;
-    z-index: 2;
+    z-index: 4;
     opacity: 0.75;
+    transition: all 2s ease-in-out;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    -ms-transition: all 2s ease-in-out;
+}
+
+.home-title {
+    max-width: auto;
+}
+
+.home-title-container.hidden {
+    opacity: 0;
+}
+
+.home-background-img-container {
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    height: calc(1080/1920 * 100vw) !important;
+    top: 112px;
+    background-size: cover;
+    background-image: url("../../assets/giron-background-clean.jpeg");
+}
+
+.home-background-video-container {
+    position: relative;
+    z-index: 3;
+    top: 0;
+    opacity: 0;
+    display: flex;
+    width: 100%;
+    height: calc(1080/1920 * 100vw) !important;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+
+.home-background-video-container.active {
+    opacity: 1;
+}
+
+.home-background-video {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: auto;
 }
 
 .home-title {
