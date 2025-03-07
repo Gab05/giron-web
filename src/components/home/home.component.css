@@ -38,9 +38,14 @@
     width: 100%;
     z-index: 0;
     height: calc(1080/1920 * 100vw) !important;
+    max-height: calc(1080/1920 * 100vw) !important;
     top: 112px;
     background-size: cover;
     background-image: url("../../assets/giron-background-clean.jpeg");
+}
+
+.home-background-img-container.hidden {
+    
 }
 
 .home-background-video-container {
@@ -64,10 +69,10 @@
 }
 
 .home-background-video {
+    background-color: #0C4739;
     position: relative;
-    top: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 .home-title {

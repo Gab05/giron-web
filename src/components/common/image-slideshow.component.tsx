@@ -44,15 +44,14 @@ export default class ImageSlideshow extends Component<ImageSlideshowProps, Image
   }
 
   private scrollButtons(index: number) {
-    const imgButtonsElement = document.getElementById("image-slideshow-buttons");
-    if (imgButtonsElement) {
-
+    const imgThumbnailsElement = document.getElementById("image-slideshow-thumbnails");
+    if (imgThumbnailsElement) {
       if (index > this.state.currentIndex) {
         // Scroll right
-        imgButtonsElement.scrollLeft += 140;
+        imgThumbnailsElement.scrollLeft += 140;
       } else if (index < this.state.currentIndex) {
         // Scroll left
-        imgButtonsElement.scrollLeft -= 140;
+        imgThumbnailsElement.scrollLeft -= 140;
       }
     }
   }
@@ -61,22 +60,6 @@ export default class ImageSlideshow extends Component<ImageSlideshowProps, Image
     if (!this.state.ready) {
       this.setState({ ready: true });
     }
-  }
-
-  getThumbnailClass(index: number): string {
-    let className = "";
-    const img = document.getElementById(`image-slideshow-thumbnail-${index}`);
-      if ((img?.clientWidth || 0) > (img?.clientHeight || 0)) {
-        className += " wide ";
-      } else if ((img?.clientWidth || 0) < (img?.clientHeight || 0)) {
-        className += " tall ";
-      }
-    
-    if (index === this.state.currentIndex) {
-      className += " active ";
-    }
-
-    return className;
   }
 
   render() {
@@ -88,35 +71,42 @@ export default class ImageSlideshow extends Component<ImageSlideshowProps, Image
           </div>
         </div>
         <div className="image-slideshow-current">
-          {this.props.images.map((slide, index) => {
-            if (index === this.state.currentIndex) {
-              return (
-                <img
-                  key={index}
-                  className={`image-slide active`}
-                  src={slide}
-                  alt={'img-slideshow-' + index}
-                />
-              )
-            } else {
-              return null;
-            }
-          })}
-        </div>
-        <div id='image-slideshow-buttons' className='image-slideshow-buttons'>
+          <div
+            className={`image-slideshow-nav image-slideshow-prev ${this.state.ready ? "" : "hidden"}`}
+            onClick={() => this.handlePreviousSlide()}
+          >
+            <button className="image-slideshow-nav-button image-slideshow-prev-icon">
+              <i className='fa fa-arrow-left image-slideshow-nav-icon' />
+            </button>
+          </div>
+          <div
+            className={`image-slideshow-nav image-slideshow-next ${this.state.ready ? "" : "hidden"}`}
+            onClick={() => this.handleNextSlide()}
+          >
+            <button className="image-slideshow-nav-button image-slideshow-next-icon">
+              <i className='fa fa-arrow-right image-slideshow-nav-icon' />
+            </button>
+          </div>
           {this.props.images.map((slide, index) => (
-
-              <img
-                key={index}
-                id={`image-slideshow-thumbnail-${index}`}
-                className={`image-slideshow-thumbnail ${index === this.state.currentIndex ? "active" : ""} wide`}
-                src={slide}
-                onClick={() => this.handleThumbnailClick(index)}
-                alt={'img-thumbnail-' + index}
-              />
-
-          )
-          )}
+            <img
+              key={index}
+              className={`image-slide ${index === this.state.currentIndex ? "active" : ""}`}
+              src={slide}
+              alt={'img-slideshow-' + index}
+            />
+          ))}
+        </div>
+        <div id='image-slideshow-thumbnails' className='image-slideshow-thumbnails'>
+          {this.props.images.map((slide, index) => (
+            <img
+              key={index}
+              id={`image-slideshow-thumbnail-${index}`}
+              className={`image-slideshow-thumbnail ${index === this.state.currentIndex ? "active" : ""} wide`}
+              src={slide}
+              onClick={() => this.handleThumbnailClick(index)}
+              alt={'img-thumbnail-' + index}
+            />
+          ))}
         </div>
       </div>
     );

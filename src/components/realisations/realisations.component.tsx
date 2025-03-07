@@ -14,6 +14,8 @@ interface RealisationsState {
 }
 
 export default class Realisations extends Component<RealisationsProps, RealisationsState> {
+  private loadingImages: boolean = false;
+
   constructor(props: RealisationsProps) {
     super(props);
     this.state = {
@@ -22,29 +24,32 @@ export default class Realisations extends Component<RealisationsProps, Realisati
   }
 
   componentDidMount(): void {
-    // Fetch images URLs and update state
-    const imgFolderRef = ref(this.props.storage, "slideshow_images/");
-    const tempImages: string[] = [];
-    listAll(imgFolderRef)
-      .then(async (result) => {
-        for (const fileRef of result.items) {
-          const url = await           getDownloadURL(fileRef);
-          tempImages.push(url);
-        }
-      })
-      .catch(e => console.warn("listAll error: ", e))
-      .finally(() => {
-        this.setState({
-          images: tempImages
+    if (!this.loadingImages) {
+      this.loadingImages = true;
+      // Fetch images URLs and update state
+      const imgFolderRef = ref(this.props.storage, "slideshow_images/");
+      const tempImages: string[] = [];
+      listAll(imgFolderRef)
+        .then(async (result) => {
+          for (const fileRef of result.items) {
+            const url = await getDownloadURL(fileRef);
+            tempImages.push(url);
+          }
         })
-      });
+        .catch(e => console.warn("listAll error: ", e))
+        .finally(() => {
+          this.setState({
+            images: tempImages
+          })
+        });
+    }
   }
 
   render() {
     return (
       <div id="realisations" className="realisations-container">
         <div className='realisations-title-container level'>
-          <i className="fa-solid fa-photo fa-lg enterprise-icon level-item"></i>
+          <i className="fa-solid fa-photo fa-lg realisations-icon level-item"></i>
           <div className='realisations-title level-item'>RÉALISATIONS</div>
         </div>
         <ImageSlideshow images={this.state.images} />
