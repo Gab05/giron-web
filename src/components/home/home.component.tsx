@@ -25,10 +25,9 @@ export default class Home extends Component<HomeComponentProps, HomeComponentSta
   componentDidMount(): void {
     const videoRef = ref(this.props.storage, "/slideshow_videos/1234.mp4");
     getDownloadURL(videoRef)
-      .then(url => {
-        setTimeout(() => this.setState({
+      .then(url => {this.setState({
           videoSrc: url
-        }), 2000);
+        });
       });
   };
 

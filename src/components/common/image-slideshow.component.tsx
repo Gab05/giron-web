@@ -7,14 +7,16 @@ interface ImageSlideshowProps {
 }
 
 interface ImageSlideshowState {
-  currentIndex: number
+  currentIndex: number;
+  ready: boolean;
 }
 
 export default class ImageSlideshow extends Component<ImageSlideshowProps, ImageSlideshowState> {
   constructor(props: ImageSlideshowProps) {
     super(props);
     this.state = {
-      currentIndex: 0
+      currentIndex: 0,
+      ready: false,
     }
   }
 
@@ -23,6 +25,7 @@ export default class ImageSlideshow extends Component<ImageSlideshowProps, Image
     this.setState({
       currentIndex: nextIndex,
     });
+    this.scrollButtons(nextIndex);
   }
 
   private handlePreviousSlide() {
@@ -30,9 +33,17 @@ export default class ImageSlideshow extends Component<ImageSlideshowProps, Image
     this.setState({
       currentIndex: prevIndex,
     });
+    this.scrollButtons(prevIndex);
   }
 
-  private handleThumbnailClick = (index) => {
+  private handleThumbnailClick = (index: number) => {
+    this.setState({
+      currentIndex: index
+    });
+    this.scrollButtons(index);
+  }
+
+  private scrollButtons(index: number) {
     const imgButtonsElement = document.getElementById("image-slideshow-buttons");
     if (imgButtonsElement) {
 
@@ -44,20 +55,44 @@ export default class ImageSlideshow extends Component<ImageSlideshowProps, Image
         imgButtonsElement.scrollLeft -= 140;
       }
     }
+  }
 
-    this.setState({
-      currentIndex: index
-    });
+  componentDidUpdate(prevProps: Readonly<ImageSlideshowProps>, prevState: Readonly<ImageSlideshowState>, snapshot?: any): void {
+    if (!this.state.ready) {
+      this.setState({ ready: true });
+    }
+  }
+
+  getThumbnailClass(index: number): string {
+    let className = "";
+    const img = document.getElementById(`image-slideshow-thumbnail-${index}`);
+      if ((img?.clientWidth || 0) > (img?.clientHeight || 0)) {
+        className += " wide ";
+      } else if ((img?.clientWidth || 0) < (img?.clientHeight || 0)) {
+        className += " tall ";
+      }
+    
+    if (index === this.state.currentIndex) {
+      className += " active ";
+    }
+
+    return className;
   }
 
   render() {
     return (
       <div className="image-slideshow-container">
+        <div className={`image-slideshow-loading ${this.state.ready ? "hidden" : ""}`}>
+          <div className="image-slideshow-loading-spinner">
+            <i className="fa fa-circle-o-notch fa-spin"></i>
+          </div>
+        </div>
         <div className="image-slideshow-current">
           {this.props.images.map((slide, index) => {
             if (index === this.state.currentIndex) {
               return (
                 <img
+                  key={index}
                   className={`image-slide active`}
                   src={slide}
                   alt={'img-slideshow-' + index}
@@ -70,17 +105,16 @@ export default class ImageSlideshow extends Component<ImageSlideshowProps, Image
         </div>
         <div id='image-slideshow-buttons' className='image-slideshow-buttons'>
           {this.props.images.map((slide, index) => (
-            <div
-              key={index}
-              className={`image-slideshow-thumbnail-container ${index === this.state.currentIndex ? 'active' : ''}`}
-              onClick={() => this.handleThumbnailClick(index)}
-            >
+
               <img
-                className={`image-slideshow-thumbnail`}
+                key={index}
+                id={`image-slideshow-thumbnail-${index}`}
+                className={`image-slideshow-thumbnail ${index === this.state.currentIndex ? "active" : ""} wide`}
                 src={slide}
+                onClick={() => this.handleThumbnailClick(index)}
                 alt={'img-thumbnail-' + index}
               />
-            </div>
+
           )
           )}
         </div>

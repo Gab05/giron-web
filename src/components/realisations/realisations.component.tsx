@@ -1,18 +1,45 @@
 import React, { Component } from 'react';
+import { ref, listAll, getDownloadURL } from "firebase/storage";
 
 import ImageSlideshow from '../common/image-slideshow.component.tsx';
 
 import './realisations.component.css';
 
 interface RealisationsProps {
-
+  storage: any;
 }
 
 interface RealisationsState {
-
+  images: any[];
 }
 
 export default class Realisations extends Component<RealisationsProps, RealisationsState> {
+  constructor(props: RealisationsProps) {
+    super(props);
+    this.state = {
+      images: [],
+    }
+  }
+
+  componentDidMount(): void {
+    // Fetch images URLs and update state
+    const imgFolderRef = ref(this.props.storage, "slideshow_images/");
+    const tempImages: string[] = [];
+    listAll(imgFolderRef)
+      .then(async (result) => {
+        for (const fileRef of result.items) {
+          const url = await           getDownloadURL(fileRef);
+          tempImages.push(url);
+        }
+      })
+      .catch(e => console.warn("listAll error: ", e))
+      .finally(() => {
+        this.setState({
+          images: tempImages
+        })
+      });
+  }
+
   render() {
     return (
       <div id="realisations" className="realisations-container">
@@ -20,7 +47,7 @@ export default class Realisations extends Component<RealisationsProps, Realisati
           <i className="fa-solid fa-photo fa-lg enterprise-icon level-item"></i>
           <div className='realisations-title level-item'>RÉALISATIONS</div>
         </div>
-        <ImageSlideshow images={[]} />
+        <ImageSlideshow images={this.state.images} />
       </div>
     )
   }
