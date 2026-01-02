@@ -20,9 +20,6 @@ export default class Footer extends Component<FooterProps, FooterState> {
         <p className="footer-text">
           © 2025 Tous droits réservés.
         </p>
-        <div onClick={this.props.openPromoModal} className="footer-link">
-          <span className="is-info">Promotion en cours</span>
-        </div>
       </div>
     )
   }
