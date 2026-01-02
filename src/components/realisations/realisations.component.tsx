@@ -11,6 +11,7 @@ interface RealisationsProps {
 
 interface RealisationsState {
   images: any[];
+  selectedTab: "images" | "videos"
 }
 
 export default class Realisations extends Component<RealisationsProps, RealisationsState> {
@@ -20,6 +21,7 @@ export default class Realisations extends Component<RealisationsProps, Realisati
     super(props);
     this.state = {
       images: [],
+      selectedTab: "images"
     }
   }
 
@@ -51,6 +53,14 @@ export default class Realisations extends Component<RealisationsProps, Realisati
         <div className='realisations-title-container level'>
           <i className="fa-solid fa-photo fa-lg realisations-icon level-item"></i>
           <div className='realisations-title level-item'>RÉALISATIONS</div>
+        </div>
+        <div className="realisations-tab-container">
+          <div className="realisations-tab-images">
+
+          </div>
+          <div className="realisations-tab-videos">
+
+          </div>
         </div>
         <ImageSlideshow images={this.state.images} />
       </div>

@@ -45,10 +45,6 @@
     background-image: url("../../assets/giron-background-clean.jpeg");
 }
 
-.home-background-img-container.hidden {
-    
-}
-
 .home-background-video-container {
     position: relative;
     z-index: 3;

@@ -25,6 +25,11 @@
     font-size: 32px;
 }
 
+.realisations-tab-container {
+    width: 100%;
+    height: 48px;
+}
+
 .realisations-content {
     margin-right: auto;
     margin-left: auto;
