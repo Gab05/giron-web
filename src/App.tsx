@@ -7,7 +7,6 @@ import Enterprise from './components/enterprise/enterprise.component.tsx'
 import Contact from './components/contact/contact.component.tsx'
 import Footer from './components/footer/footer.component.tsx'
 import SubmissionModal from "./components/common/submission-modal.component.tsx";
-import PromoBanner from "./components/home/promo-banner.component.tsx";
 import PromoModal from "./components/home/promo-modal.component.tsx";
 import Realisations from "./components/realisations/realisations.component.tsx";
 import { firebaseStorage } from "./firebase-config.js";
@@ -31,7 +30,6 @@ function App() {
       <PromoModal isOpen={promoModalOpen} closeHandler={closePromoModal} />
       <div className="App-container">
         <Header />
-        <PromoBanner openPromoModal={openPromoModal} />
         <Home storage={firebaseStorage} />
         <Enterprise openSubmissionModal={openSubmissionModal} />
         <Services />
